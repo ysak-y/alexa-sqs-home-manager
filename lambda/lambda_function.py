@@ -5,7 +5,7 @@ def lambda_handler(request_obj, context=None):
     metadata = {}
     return alexa.route_request(request_obj, context)
 
-@alexa.default_handler
+@alexa.default_handler()
 def default_handler(request):
     return alexa.respond('home manager')
 
