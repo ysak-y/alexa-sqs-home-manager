@@ -4,15 +4,10 @@ versioning: false
 default_alias: null
 clean_build: false
 configuration:
-  name: lambda
+  name: alexa-sqs
   runtime: python2.7
-  role: arn:aws:iam::<account-number>:role/<role>
+  role: arn:aws:iam::180047737375:role/lambda_basic_execution
   handler: lambda_function.lambda_handler
-  description: This is a sample lambda function.
+  description: Send message to SQS to controll RasPi through alexa.
   timeout: 10
   memory_size: 128
-  vpc_config:
-    subnets:
-    - subnet-xxxxxxxx
-    security_groups:
-    - sg-xxxxxxxx
