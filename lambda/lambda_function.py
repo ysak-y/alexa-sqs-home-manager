@@ -18,7 +18,7 @@ def launch_request_handler(request):
 def session_ended_request_handler(request):
     return alexa.create_response(message='GoodBye')
 
-@alexa.request_handler('YeelightOn')
+@alexa.intent_handler('YeelightOn')
 def yeelight_on_request_hander(request):
     client = boto3.client('sqs', region_name='us-east-1')
 
@@ -34,7 +34,7 @@ def yeelight_on_request_hander(request):
     print(response)
     return alexa.create_response(message='yeelight on', end_session=True)
 
-@alexa.request_handler('YeelightOff')
+@alexa.intent_handler('YeelightOff')
 def yeelight_on_request_hander(request):
     client = boto3.client('sqs', region_name='us-east-1')
 
