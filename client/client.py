@@ -7,13 +7,18 @@ from yeelight import Bulb, discover_bulbs
 ip = discover_bulbs()[0]['ip']
 bulb = Bulb(ip)
 
+print(ip)
+print(bulb)
+
 def execute(body, attr):
     if body == 'SwitchYeelight':
         state = attr['switch']
         if state == 'on':
-            bulb.turn_on()
+            response = bulb.turn_on()
+            print("%s is %s" % (bulb, response))
         else:
-            bulb.turn_off()
+            response = bulb.turn_off()
+            print("%s is %s" % (bulb, response))
 
 def inquire_new_message():
     client = boto3.client('sqs', region_name='us-east-1')
