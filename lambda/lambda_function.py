@@ -23,7 +23,7 @@ def yeelight_on_request_hander(request):
     client = boto3.client('sqs', region_name='us-east-1')
 
     response = client.send_message(
-            QueueUrl='https://sqs.us-east-1.amazonaws.com/180047737375/test',
+            QueueUrl=os.environ['SQS_URL'],
             MessageBody='SwitchYeelight',
             MessageAttributes={
                 'StringValue': 'On',
@@ -39,7 +39,7 @@ def yeelight_on_request_hander(request):
     client = boto3.client('sqs', region_name='us-east-1')
 
     response = client.send_message(
-            QueueUrl='https://sqs.us-east-1.amazonaws.com/180047737375/test',
+            QueueUrl=os.environ['SQS_URL'],
             MessageBody='SwitchYeelight',
             MessageAttributes={
                 'StringValue': 'Off',
