@@ -11,19 +11,9 @@ def execute(body, attr):
     if body == 'SwitchYeelight':
         state = attr['switch']
         if state == 'on':
-            try:
-                bulb.turn_on()
-            except ConnectionRefusedError:
-                ip = discover_bulbs()[0]['ip']
-                bulb = Bulb(ip)
-                bulb.turn_on()
+            bulb.turn_on()
         else:
-            try:
-                bulb.turn_off()
-            except ConnectionRefusedError:
-                ip = discover_bulbs()[0]['ip']
-                bulb = Bulb(ip)
-                bulb.turn_off()
+            bulb.turn_off()
 
 def inquire_new_message():
     client = boto3.client('sqs', region_name='us-east-1')
