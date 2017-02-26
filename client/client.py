@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import time
 import boto3
 from yeelight import Bulb, discover_bulbs
