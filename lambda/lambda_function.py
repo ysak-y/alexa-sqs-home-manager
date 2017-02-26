@@ -32,7 +32,7 @@ def yeelight_on_request_hander(request):
             )
 
     print(response)
-    return alexa.create_response(message='yeelight on')
+    return alexa.create_response(message='yeelight on', end_session=True)
 
 @alexa.request_handler('YeelightOff')
 def yeelight_on_request_hander(request):
@@ -48,4 +48,4 @@ def yeelight_on_request_hander(request):
             )
 
     print(response)
-    return alexa.create_response(message='yeelight off')
+    return alexa.create_response(message='yeelight off', end_session=True)
