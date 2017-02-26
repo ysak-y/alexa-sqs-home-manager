@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import boto3
 from ask import alexa
+import os
 
 def lambda_handler(request_obj, context=None):
     metadata = {}
