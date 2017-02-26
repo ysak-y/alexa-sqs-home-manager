@@ -8,7 +8,7 @@ def lambda_handler(request_obj, context=None):
 
 @alexa.default_handler()
 def default_handler(request):
-    return alexa.respond('home manager')
+    return alexa.create_response(message='home manager', end_session=True)
 
 @alexa.request_handler('LaunchRequest')
 def launch_request_handler(request):
