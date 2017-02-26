@@ -30,7 +30,7 @@ def inquire_new_message():
     
     response = client.receive_message(
             QueueUrl=os.environ['SQS_URL'],
-            MessageAttributes=['All']
+            MessageAttributeNames=['All']
             )
     print(response)
 
