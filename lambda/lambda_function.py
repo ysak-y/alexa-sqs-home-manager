@@ -27,8 +27,10 @@ def yeelight_on_request_hander(request):
             QueueUrl=os.environ['SQS_URL'],
             MessageBody='SwitchYeelight',
             MessageAttributes={
-                'StringValue': 'On',
-                'DataType': 'String'
+                'switch': {
+                    'StringValue': 'On',
+                    'DataType': 'String'
+                    }
                 }
             )
 
@@ -43,8 +45,10 @@ def yeelight_on_request_hander(request):
             QueueUrl=os.environ['SQS_URL'],
             MessageBody='SwitchYeelight',
             MessageAttributes={
-                'StringValue': 'Off',
-                'DataType': 'String'
+                'switch': {
+                    'StringValue': 'Off',
+                    'DataType': 'String'
+                    }
                 }
             )
 
