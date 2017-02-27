@@ -12,8 +12,8 @@ print(bulb)
 
 def execute(body, attr):
     if body == 'SwitchYeelight':
-        state = attr['switch']
-        if state == 'on':
+        state = attr['switch']['StringValue']
+        if state == 'On':
             response = bulb.turn_on()
             print("%s is %s" % (bulb, response))
         else:
@@ -33,6 +33,7 @@ def inquire_new_message():
         message = response['Messages'][0]
         body = message['Body']
         attr = message['MessageAttributes']
+        receipt_handle = message['ReceiptHandle']
         execute(body, attr)
 
 
