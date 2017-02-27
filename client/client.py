@@ -33,7 +33,14 @@ def inquire_new_message():
         message = response['Messages'][0]
         body = message['Body']
         attr = message['MessageAttributes']
+
+        # Delete received message.
         receipt_handle = message['ReceiptHandle']
+        response = client.receive_message(
+                QueueUrl=os.environ['SQS_URL'],
+                ReceiptHandle=receipt_handle
+                )
+
         execute(body, attr)
 
 
