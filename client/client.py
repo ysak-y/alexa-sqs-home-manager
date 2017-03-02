@@ -46,4 +46,3 @@ def polling():
 if __name__ == '__main__':
     p = Process(target=polling)
     p.start()
-    p.join()
