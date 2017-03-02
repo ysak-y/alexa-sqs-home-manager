@@ -45,4 +45,5 @@ def polling():
 
 if __name__ == '__main__':
     p = Process(target=polling)
+    p.daemon = True
     p.start()
