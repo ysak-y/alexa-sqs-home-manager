@@ -3,6 +3,7 @@ import os
 import time
 import boto3
 from yeelight import Bulb, discover_bulbs
+from multiprocessing import Process
 
 ip = discover_bulbs()[0]['ip']
 bulb = Bulb(ip)
@@ -37,8 +38,12 @@ def inquire_new_message():
 
         execute(body, attr)
 
-
-if __name__ == '__main__':
+def polling():
     while True:
         time.sleep(2)
         inquire_new_message()
+
+if __name__ == '__main__':
+    p = Process(target=polling)
+    p.start()
+    p.join()
