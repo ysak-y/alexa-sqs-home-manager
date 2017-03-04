@@ -41,7 +41,7 @@ def inquire_new_message():
 
 if __name__ == '__main__':
     with PidFile('my-pid', '/var/run/my-pid') as p:
-        pid_path = p.piddir + '/' + pid.pidname + '.pid'
+        pid_path = p.piddir + '/' + p.pidname + '.pid'
         with daemon.DaemonContext(detach_process=True, pidfile=pid_path):
             while True:
                 time.sleep(2)
