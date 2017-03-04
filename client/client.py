@@ -43,3 +43,4 @@ if __name__ == '__main__':
     with DaemonContext():
         while True:
             time.sleep(2)
+            inquire_new_message()
