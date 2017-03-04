@@ -40,9 +40,6 @@ def inquire_new_message():
         execute(body, attr)
 
 if __name__ == '__main__':
-    p = PidFile('my-pid', '/var/run/my-pid')
-    p.create()
-    pid_path = p.piddir + '/' + p.pidname + '.pid'
-    with DaemonContext(detach_process=True, pidfile=pid_path):
+    with DaemonContext():
         while True:
             time.sleep(2)
