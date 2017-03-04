@@ -3,7 +3,8 @@ import os
 import time
 import boto3
 from yeelight import Bulb, discover_bulbs
-from multiprocessing import Process
+from daemon import Daemon
+from pid import PidFile
 
 ip = discover_bulbs()[0]['ip']
 bulb = Bulb(ip)
@@ -38,12 +39,14 @@ def inquire_new_message():
 
         execute(body, attr)
 
-def polling():
-    while True:
-        time.sleep(2)
-        inquire_new_message()
+class Manager(Daemon):
+    def run(self):
+        while True:
+            time.sleep(2)
+            inquire_new_message()
 
 if __name__ == '__main__':
-    p = Process(target=polling)
-    p.daemon = True
-    p.start()
+    with PidFile('my-pid', '/var/run/my-pid') as p:
+        pid_path = p.piddir + '/' + pid.pidname + '.pid'
+        manager = Manager(pid_path)
+        manager.start()
