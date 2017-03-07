@@ -1,6 +1,8 @@
 # alexa-sqs-home-manager
 Controll local server through alexa using AWS SQS
 
+client.py should run in Raspberry Pi, and lambda_function.py should run in AWS Lambda
+
 ## Lambda Function
 
 ### YeelightOn
